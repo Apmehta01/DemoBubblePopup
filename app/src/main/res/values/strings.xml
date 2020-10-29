@@ -1,0 +1,10 @@
+<resources>
+  <string name="app_name">DemoBubblePopup</string>
+  <string name="channel_quotes">Inspirational Quotes</string>
+  <string name="channel_quotes_description">Inspirational Quotes Channel</string>
+    <string name="str_daily_quotes"><u>Daily Quotes!</u></string>
+    <string name="str_new_quotes"><u>New quote</u></string>
+  <string name="tools_text">"“Everyday life is like programming, I guess. " +
+              "If you love something you can put beauty into it.”",
+          " -  Donald Knuth"</string>
+</resources>

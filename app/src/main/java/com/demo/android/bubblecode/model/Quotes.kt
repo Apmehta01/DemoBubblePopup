@@ -31,43 +31,47 @@
 package com.demo.bubblecode.model
 
 object Quotes {
-  private val quotes = listOf<Quote>(
-      Quote(
-          "“As long as you are learning, you are not failing.”",
-          "  - Bob Ross"),
-      Quote(
-          "“I'm not a great programmer; I'm just a good " +
-              "programmer with great habits.”",
-          "  - Kent Beck"),
-      Quote(
-          "“Is it possible that software is not like anything else, that it is meant" +
-              " to be discarded: that the whole point is to always see it as a soap bubble?”",
-          " -  Alan J Perlis"),
-      Quote(
-          "“The only way to go fast, is to go well.”",
-          " -  Robert C Martin"),
-      Quote(
-          "“I'm a programmer. I like programming. And the best way I've found to " +
-              "have a positive impact on code is to write it.”",
-          " -  Robert C Martin"),
-      Quote(
-          "“If you can write \"hello world\" you can change the world.”",
-          " -  Raghu Venkatesh"),
-      Quote(
-          "“Everyday life is like programming, I guess. " +
-              "If you love something you can put beauty into it.”",
-          " -  Donald Knuth"),
-      Quote(
-          "“Programming isn't about what you know; it's about what you can figure out.”",
-          " -  Robert C Martin"),
-      Quote(
-          "“Not all roots are buried down in the ground, some " +
-              "are at the top of a tree.”", " -  Robert C Martin"),
-      Quote(
-          "“The perfect kind of architecture decision is the one which never has to be made.”",
-          " -  Robert C Martin")
-  )
+    private val quotes = listOf<Quote>(
+            Quote(
+                    "“As long as you are learning, you are not failing.”",
+                    "  - Bob Ross"),
+            Quote(
+                    "“I'm not a great programmer; I'm just a good " +
+                            "programmer with great habits.”",
+                    "  - Kent Beck"),
+            Quote(
+                    "“Is it possible that software is not like anything else, that it is meant" +
+                            " to be discarded: that the whole point is to always see it as a soap bubble?”",
+                    " -  Alan J Perlis"),
+            Quote(
+                    "“The only way to go fast, is to go well.”",
+                    " -  Robert C Martin"),
+            Quote(
+                    "“I'm a programmer. I like programming. And the best way I've found to " +
+                            "have a positive impact on code is to write it.”",
+                    " -  Robert C Martin"),
+            Quote(
+                    "“If you can write \"hello world\" you can change the world.”",
+                    " -  Raghu Venkatesh"),
+            Quote(
+                    "“Everyday life is like programming, I guess. " +
+                            "If you love something you can put beauty into it.”",
+                    " -  Donald Knuth"),
+            Quote(
+                    "“Programming isn't about what you know; it's about what you can figure out.”",
+                    " -  Robert C Martin"),
+            Quote(
+                    "“Not all roots are buried down in the ground, some " +
+                            "are at the top of a tree.”", " -  Robert C Martin"),
+            Quote(
+                    "“Any fool can write code that a computer can understand. " +
+                            "Good programmers write that human can understand.”", " " +
+                            "-  Martin Fowler"),
+            Quote(
+                    "“The perfect kind of architecture decision is the one which never has to be made.”",
+                    " -  Robert C Martin")
+    )
 
-  val randomQuote
-    get() = quotes.random()
+    val randomQuote
+        get() = quotes.random()
 }

@@ -30,7 +30,12 @@
 
 package com.demo.bubblecode.ui
 
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Html
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -42,39 +47,63 @@ import kotlinx.android.synthetic.main.activity_quote_bubble.*
 
 class QuoteBubbleActivity : AppCompatActivity() {
 
-  private lateinit var viewModel: QuoteBubbleViewModel
-  private lateinit var binding: ActivityQuoteBubbleBinding
+    private lateinit var viewModel: QuoteBubbleViewModel
+    private lateinit var binding: ActivityQuoteBubbleBinding
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    binding = DataBindingUtil.setContentView(this,
-        R.layout.activity_quote_bubble)
-    binding.setLifecycleOwner(this)
-    viewModel = ViewModelProviders.of(this).get(
-        QuoteBubbleViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this,
+                R.layout.activity_quote_bubble)
+        binding.setLifecycleOwner(this)
+        viewModel = ViewModelProviders.of(this).get(
+                QuoteBubbleViewModel::class.java)
 
-    quoteTextView.text = viewModel.repository.currentQuote.quoteText
-    authorTextView.text = viewModel.repository.currentQuote.author
+        quoteTextView.text = viewModel.repository.currentQuote.quoteText
+        authorTextView.text = viewModel.repository.currentQuote.author
+//        setColorText()
+        viewModel.quoteLiveData
+                .observe(this, Observer { quote ->
+                    quote?.let {
+                        quoteTextView.text = quote.quoteText
+                        authorTextView.text = quote.author
+//                        setColorText()
+                    }
+                })
 
-    viewModel.quoteLiveData
-        .observe(this, Observer { quote ->
-          quote?.let {
-            quoteTextView.text = quote.quoteText
-            authorTextView.text = quote.author
-          }
-        })
-
-    newQuoteButton.setOnClickListener {
-      viewModel.updateQuote()
+        newQuoteButton.setOnClickListener {
+            viewModel.updateQuote()
+        }
     }
-  }
+
+    private fun setColorText() {
+        try {
+            Log.d("COUNT", "COUNT:>>>>>>>" + viewModel.repository.currentQuote.quoteText.length);
+            val count = viewModel.repository.currentQuote.quoteText.length / 2
+            Log.d("COUNT", "COUNT DEVIDE:>>>>>>>" + count)
+            val wordPartOne = SpannableString(viewModel.repository.currentQuote.quoteText.substring(0, count))
+            val wordPartTwo = SpannableString(viewModel.repository.currentQuote.quoteText.substring(count + 1, viewModel.repository.currentQuote.quoteText.length))
+            Log.d("PART", "PART:>>>>>>>" + wordPartOne + System.lineSeparator() + wordPartTwo)
+            val textAns = "<font color=#cc0029></font> <font color=#ffcc00>Second Color</font>"
+
+            wordPartOne.setSpan(ForegroundColorSpan(applicationContext.resources.getColor(R.color.colorPenMiddle)),
+                    0, wordPartOne.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            quoteTextView.text =wordPartOne
+
+          wordPartTwo.setSpan(ForegroundColorSpan(applicationContext.resources.getColor(R.color.colorPenBottom)),
+                  0, wordPartOne.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+          quoteTextView.append(wordPartTwo)
+
+        } catch (e: Exception) {
+            e.stackTrace
+        }
+    }
 
 
-  override fun onResume() {
-    super.onResume()
-    Log.d("Resume", "Resume")
-    quoteTextView.text = viewModel.repository.currentQuote.quoteText
-    authorTextView.text = viewModel.repository.currentQuote.author
-  }
+    override fun onResume() {
+        super.onResume()
+        Log.d("Resume", "Resume")
+        quoteTextView.text = viewModel.repository.currentQuote.quoteText
+        authorTextView.text = viewModel.repository.currentQuote.author
+    }
 }

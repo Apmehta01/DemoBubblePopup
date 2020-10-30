@@ -39,6 +39,6 @@
       android:top="100dp">
     <bitmap
         android:gravity="center"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/ic_launcher_new" />
   </item>
 </layer-list>

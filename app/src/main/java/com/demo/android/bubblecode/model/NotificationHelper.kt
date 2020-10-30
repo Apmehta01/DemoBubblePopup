@@ -30,14 +30,19 @@
 
 package com.demo.bubblecode.model
 
+import android.annotation.SuppressLint
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
 import com.demo.android.bubblecode.R
 import com.demo.bubblecode.ui.QuoteBubbleActivity
 import java.lang.System.currentTimeMillis
+
 
 class NotificationHelper(private val context: Context) {
   companion object {
@@ -97,13 +102,22 @@ class NotificationHelper(private val context: Context) {
 
   fun createIcon(): Icon {
     return Icon.createWithAdaptiveBitmap(
-        BitmapFactory.decodeResource(
-            context.resources,
-            R.drawable.ic_quote
-        )
+        BitmapFactory.decodeResource(context.resources,R.mipmap.ic_launcher)
     )
   }
 
+  private fun getBitmapFromDrawable(icLauncherNew: Int): Int {
+    val drawable: Drawable = context.getResources().getDrawable(icLauncherNew)
+    val canvas = Canvas()
+    val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+    canvas.setBitmap(bitmap)
+    drawable.setBounds(0, 0, drawable.intrinsicWidth, drawable.intrinsicHeight)
+    drawable.draw(canvas)
+
+    return icLauncherNew
+  }
+
+  @SuppressLint("ResourceAsColor")
   fun createBubbleMetadata(icon: Icon, fromUser: Boolean):
       Notification.BubbleMetadata {
     return Notification.BubbleMetadata.Builder()

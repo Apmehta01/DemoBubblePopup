@@ -5,11 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewmodel"
             type="com.demo.bubblecode.ui.QuoteBubbleViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -45,7 +45,6 @@ class QuoteRepository internal constructor(private val notificationHelper:
                 ?: QuoteRepository(
                     NotificationHelper(context)
 
-
                 ).also {
                   instance = it
                 }

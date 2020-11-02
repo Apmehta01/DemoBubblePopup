@@ -36,6 +36,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import com.demo.android.bubblecode.R
 
@@ -51,6 +52,8 @@ class MainActivity : AppCompatActivity() {
     setTheme(R.style.AppTheme)
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+    val toolbar: Toolbar = findViewById<View>(R.id.tool_bar) as Toolbar
+    setSupportActionBar(toolbar)
     viewModel = ViewModelProviders.of(this)
         .get(MainActivityViewModel::class.java)
 

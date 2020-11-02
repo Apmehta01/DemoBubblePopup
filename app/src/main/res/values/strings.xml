@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">DemoBubblePopup</string>
+  <string name="app_name">Bubble Popup</string>
   <string name="channel_quotes">Inspirational Quotes</string>
   <string name="channel_quotes_description">Inspirational Quotes Channel</string>
     <string name="str_daily_quotes"><u>Daily Quotes!</u></string>
